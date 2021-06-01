@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import useCity from "../../Hooks/useCity";
 import useWeather from "../../Hooks/useWeather";
 import Search from "../Search/Search";
+import HourlyForecast from "../Weather/HourlyForecast";
 import Weather from "../Weather/Weather";
 
 //TODO create some test cases
@@ -75,7 +76,32 @@ const App = () => {
 		setShowCityList(true);
 	};
 
-	useEffect(() => {}, [selected, setSelected]);
+	const data = {
+		labels: ["January", "February", "March", "April", "May", "June", "July"],
+		datasets: [
+			{
+				label: "Dataset of Months",
+				fill: false,
+				lineTension: 0.1,
+				backgroundColor: "rgba(75,192,192,0.4)",
+				borderColor: "rgba(75,192,192,1)",
+				borderCapStyle: "butt",
+				borderDash: [],
+				borderDashOffset: 0.0,
+				borderJoinStyle: "miter",
+				pointBorderColor: "rgba(75,192,192,1)",
+				pointBackgroundColor: "#fff",
+				pointBorderWidth: 1,
+				pointHoverRadius: 5,
+				pointHoverBackgroundColor: "rgba(75,192,192,1)",
+				pointHoverBorderColor: "rgba(220,220,220,1)",
+				pointHoverBorderWidth: 2,
+				pointRadius: 1,
+				pointHitRadius: 10,
+				data: [65, 59, 80, 81, 56, 55, 40],
+			},
+		],
+	};
 
 	return (
 		<main>
@@ -90,6 +116,14 @@ const App = () => {
 				showCityList={showCityList}
 				handleBlur={handleBlur}
 				handleFocus={handleFocus}
+			/>
+
+			<HourlyForecast
+				weatherData={weatherData}
+				weatherError={weatherError}
+				weatherIsError={weatherIsError}
+				weatherIsLoading={weatherIsLoading}
+				weatherIsSuccess={weatherIsSuccess}
 			/>
 
 			<Weather

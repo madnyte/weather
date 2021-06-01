@@ -22,3 +22,7 @@ main {
 	display: grid;
 	place-items: center;
 }
+
+.chart {
+	margin-top: 10rem;
+}

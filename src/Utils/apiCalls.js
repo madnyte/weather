@@ -17,7 +17,7 @@ const api = {
 	},
 	fetchWeather: async (lat, lon) => {
 		const response = await fetch(
-			`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&units=metric&appid=${weatherApiKey}`
+			`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&units=metric&appid=${weatherApiKey}`
 		);
 		return response.json();
 	},
